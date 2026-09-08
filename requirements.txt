@@ -1,0 +1,11 @@
+numpy
+pandas
+scipy
+scikit-learn
+matplotlib
+seaborn
+yfinance
+tensorflow
+protobuf<7,>=3.20
+tabulate
+notebook
