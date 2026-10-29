@@ -45,13 +45,13 @@ $$
 \text{PnL}_T = \sum_{t=0}^{T-1} \delta_t (S_{t+1} - S_t) \;-\; \sum_{t=0}^{T-1} c\,|\delta_t - \delta_{t-1}|\,S_t \;-\; \max(S_T - K, 0)
 $$
 
-where $c = 10$ bps is the proportional transaction cost. There is no "correct" $\delta_t$ to regress against, so the network is trained on a **risk measure of the P&L distribution** instead of a pointwise loss. Following Buehler et al. (2019), we use the entropic risk measure:
+Where $c = 10$ bps is the proportional transaction cost. There is no "correct" $\delta_t$ to regress against, so the network is trained on a **risk measure of the P&L distribution** instead of a pointwise loss. Following Buehler et al. (2019), we use the entropic risk measure:
 
 $$
 \rho(X) = \frac{1}{\lambda} \log \mathbb{E}\big[\exp(-\lambda X)\big]
 $$
 
-whose optimal value is the exponential-utility indifference price of the option, and which is computed via a numerically-stable `logsumexp` to avoid overflow in training. $\lambda$ (risk aversion, default 10) controls how harshly the loss punishes tail losses.
+Whose optimal value is the exponential-utility indifference price of the option, and which is computed via a numerically-stable `logsumexp` to avoid overflow in training. $\lambda$ (risk aversion, default 10) controls how harshly the loss punishes tail losses.
 
 ## Data
 
